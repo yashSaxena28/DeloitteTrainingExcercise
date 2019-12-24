@@ -91,3 +91,106 @@
 28. select job_id,count(employee_id),sum(salary),max(salary)-min(salary)
     from employees
     group by job_id;
+
+29. select job_id from employees
+    group by job_id
+    having avg(salary)>10000;
+
+30. select to_char(hire_date,'YYYY')    
+    from employees
+    group by hire_date
+    having count(employee_id)>10 ;
+
+31. select department_id from employees
+    where commission_pct is not null
+    group by department_id
+    having count(employee_id)>5 ;
+
+32. select employee_id from job_history
+    group by employee_id
+    having count(employee_id)>1;
+
+33. select job_id from job_history
+    where end_date-TO_date(start_date)>100
+    group by job_id
+    having count(employee_id)>3;
+
+34. select department_id, to_char(hire_date,'YYYY') as "Year", count(employee_id)
+    from employees
+    group by department_id,to_char(hire_date,'YYYY');
+
+35. select department_id, d.department_name 
+    from employees e join departments d
+    using(department_id)
+    group by department_id,e.manager_id,d.department_name
+    having count(e.manager_id)>5;
+
+36. update employees
+    set salary = 8000
+    where employee_id = 115 and salary<6000;
+
+37. insert into employees values(77,'Yash','Saxena','YSSXN','750.301.1046','23-DEC-2019','IT_PROG',25000,0.9,100,90);
+
+38. delete from departments where department_id=270;
+
+39. update employees
+    set job_id= 'IT_PROG'
+    where job_id not like 'IT%' 
+    and department_id=10 
+    and employee_id=110;
+
+40. insert into departments 
+    values(270,'MARKETING',120,(select location_id from locations where lower(city)='tokyo'));
+
+41. SELECT D.DEPARTMENT_NAME, COUNT(E.EMPLOYEE_ID) 
+    FROM DEPARTMENTS D JOIN EMPLOYEES E
+    USING (department_id)
+    GROUP BY DEPARTMENT_NAME;
+
+42. SELECT J.JOB_TITLE,JH.EMPLOYEE_ID,JH.END_DATE-TO_DATE(JH.START_DATE)
+    FROM JOB_HISTORY JH JOIN JOBS J USING(JOB_ID)
+    WHERE JH.DEPARTMENT_ID=30;
+
+43. SELECT D.DEPARTMENT_NAME,E.FIRST_NAME 
+    FROM DEPARTMENTS D JOIN EMPLOYEES E
+    ON D.MANAGER_ID=E.EMPLOYEE_ID;
+
+44. SELECT D.DEPARTMENT_NAME,E.FIRST_NAME, L.CITY 
+    FROM DEPARTMENTS D JOIN EMPLOYEES E
+    ON D.MANAGER_ID=E.EMPLOYEE_ID
+    JOIN LOCATIONS L
+    USING(LOCATION_ID);
+
+45. SELECT CO.COUNTRY_NAME, L.CITY, D.DEPARTMENT_NAME
+    FROM COUNTRIES CO JOIN LOCATIONS L 
+    USING(COUNTRY_ID)
+    JOIN DEPARTMENTS D 
+    USING(LOCATION_ID);
+
+46. SELECT J.JOB_TITLE,D.DEPARTMENT_NAME,E.LAST_NAME,JH.START_DATE
+    FROM JOBS J JOIN EMPLOYEES E
+    USING(JOB_ID)
+    JOIN DEPARTMENTS D
+    USING(DEPARTMENT_ID)
+    JOIN JOB_HISTORY JH
+    USING(JOB_ID);
+
+47. SELECT J.JOB_TITLE,AVG(E.SALARY)
+    FROM EMPLOYEES E LEFT JOIN JOBS J
+    ON E.JOB_ID=J.JOB_ID
+    GROUP BY J.JOB_TITLE;
+
+48. SELECT J.JOB_TITLE, E.FIRST_NAME, MAX(E.SALARY)-E.SALARY AS SALARYDIFFERENCE
+    FROM JOBS J JOIN EMPLOYEES E
+    USING(JOB_ID)
+    GROUP BY J.JOB_TITLE,E.FIRST_NAME;
+
+49. SELECT E.LAST_NAME,J.JOB_TITLE
+    FROM EMPLOYEES E JOIN JOBS J
+    USING(JOB_ID)
+    WHERE DEPARTMENT_ID=30
+    AND COMMISSION_PCT IS NOT NULL;
+
+50. SELECT * FROM JOBS
+    WHERE EXISTS(SELECT EMPLOYEE_ID FROM EMPLOYEES
+    WHERE SALARY>15000);
