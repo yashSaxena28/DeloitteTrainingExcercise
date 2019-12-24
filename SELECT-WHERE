@@ -181,7 +181,7 @@
     ON E.JOB_ID=J.JOB_ID
     GROUP BY J.JOB_TITLE;
 
-48. SELECT J.JOB_TITLE, E.FIRST_NAME, (select max(salary) from employees where salary is not null)-salary AS SALARYDIFFERENCE
+48. SELECT J.JOB_TITLE, E.FIRST_NAME, max_salary-salary AS SALARYDIFFERENCE
     FROM JOBS J JOIN EMPLOYEES E
     USING(JOB_ID);
 
