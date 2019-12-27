@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <style>
+            sup{
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <form style="margin-bottom: 0px;">
+            <h2 align=center>Candidate Information</h2>
+            <table border=2 style="background-color: skyblue; margin-bottom: 0px;" align=center>
+                <tr>
+                    <td>Name: <sup>*</sup></td>
+                    <td><input type="text" name="name"></td>
+                </tr>
+                <tr>
+                    <td>Password: <sup>*</sup></td>
+                    <td><input type="password" name="pass"></td>
+                </tr>
+                    <td>Phone number: <sup>*</sup></td>
+                    <td><input type="text" name="contact"></td>
+                <tr>
+                    <td>Gender: <sup>*</sup></td>
+                    <td>
+                        <input type="radio" name="gender">Male                
+                        <input type="radio" name="gender">Female</td>
+                </tr>
+                <tr>
+                    <td>Date of Birth: <sup>*</sup></td>
+                    <td><input type="date" name="dob"></td>
+                </tr>
+                <tr>
+                    <td>Email: <sup>*</sup></td>
+                    <td><input type="text" name="email"></td>
+                </tr>
+                <tr>
+                    <td>Highest Qualification: <sup>*</sup></td>
+                    <td>
+                        <select id="qualificaion">
+                            <object value="Select Highest Qualification" selected></object>
+                            <object value="High School" selected></object>
+                            <object value="Senior Secondary" selected></object>
+                            <object value="Graduate" selected></object>
+                            <object value="Post Graduate" selected></object>
+                            <object value="PhD" selected></object>
+                        </select></td>
+                </tr>
+                <tr>
+                    <td>Courses Interested in: <sup>*</sup></td>
+                    <td>
+                        <input type="checkbox" name="courses">Java                
+                        <input type="checkbox" name="courses">HTML5
+                        <input type="checkbox" name="courses">CSS3                
+                        <input type="checkbox" name="courses">Angular JS
+                        
+                        <input type="checkbox" name="courses">JQuery       
+                    </td>
+                </tr>
+                <tr>
+                    <td>Comments: (Mention External Certifications if any)</td>
+                    <td><textarea rows="5"></textarea></td>
+                </tr>
+                <tr>
+                    <td>Upload Degree/External Certificates: <sup>*</sup></td>
+                    <td><input type="file" name="certificate"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" name="submit" value="Submit Information">
+                    <input type="reset" name="clearbutton" value="Clear"></td>
+                </tr>
+            </table><br>
+        </form>
+            <p style="text-align:center; margin-top: 0px; color:red;">All fields marked (* ) are mandatory</p>
+    </body>
+</html>
